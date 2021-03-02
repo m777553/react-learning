@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const WelcomeScreen = props => {
-  const { errorsCount } = props;
+const WelcomeScreen = (props) => {
+  const {errorsCount} = props;
 
   return (
     <section className="welcome">
