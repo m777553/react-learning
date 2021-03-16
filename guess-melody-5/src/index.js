@@ -7,8 +7,8 @@ import questions from "./mocks/questions.js";
 const Settings = {
   ERRORS_COUNT: 3
 };
-//Подключим и  передадим моки в компонент `App`. import questions from "./mocks/questions.js"; questions={questions}
+// Подключим и  передадим моки в компонент `App`. import questions from "./mocks/questions.js"; questions={questions}
 ReactDOM.render(
-  <App errorsCount={Settings.ERRORS_COUNT} questions={questions} />,
-  document.querySelector(`#root`)
+    <App errorsCount={Settings.ERRORS_COUNT} questions={questions} />,
+    document.querySelector(`#root`)
 );

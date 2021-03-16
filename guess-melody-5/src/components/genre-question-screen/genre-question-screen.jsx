@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { GameType } from "../../const";
 
-//В компонент `GenreQuestionScreen` нам потребуется `state`. В нём мы будем хранить информацию о правильном ответе на очередной вопрос. Поэтому обновим компонент и перепишем его в class-components.
+// В компонент `GenreQuestionScreen` нам потребуется `state`. В нём мы будем хранить информацию о правильном ответе на очередной вопрос. Поэтому обновим компонент и перепишем его в class-components.
 
 class GenreQuestionScreen extends PureComponent {
   constructor(props) {
@@ -51,7 +51,15 @@ class GenreQuestionScreen extends PureComponent {
 
         <section className="game__screen">
           <h2 className="game__title">Выберите {genre} треки</h2>
-          <form className="game__tracks">
+          //Добавим описание обработчика `onSubmit` для формы выбора ответа на
+          вопрос.
+          <form
+            className="game__tracks"
+            onSubmit={(evt) => {
+              evt.preventDefault();
+              onAnswer(question, this.state.answers);
+            }}
+          >
             {answers.map((answer, i) => (
               <div key={`${i}-${answer.src}`} className="track">
                 <button
@@ -97,7 +105,7 @@ class GenreQuestionScreen extends PureComponent {
   }
 }
 
-//в примере удалена вся форма!!!!!
+// в примере удалена вся форма!!!!!
 
 GenreQuestionScreen.propTypes = {
   onAnswer: PropTypes.func.isRequired,
