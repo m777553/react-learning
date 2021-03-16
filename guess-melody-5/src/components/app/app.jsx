@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen";
@@ -9,8 +9,8 @@ import GameOverScreen from "../game-over-screen/game-over-screen";
 import WinScreen from "../win-screen/win-screen";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
 
-const App = (props) => {
-  const {errorsCount} = props;
+const App = props => {
+  const { errorsCount } = props;
 
   return (
     <BrowserRouter>
