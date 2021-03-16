@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { GameType } from "../../const";
+import {GameType} from "../../const";
 
-const ArtistQuestionScreen = props => {
-  const { onAnswer, question } = props;
-  const { answers, song } = question;
+const ArtistQuestionScreen = (props) => {
+  const {onAnswer, question} = props;
+  const {answers, song} = question;
   return (
     <section className="game game--artist">
       <header className="game__header">
@@ -54,7 +54,7 @@ const ArtistQuestionScreen = props => {
 
         <form className="game__artist">
           //всё что внутри формы разворачивается map-ом из полученных данных
-          {answer.map((answer, i) => (
+          {answers.map((answer, i) => (
             <div className="artist" key={answer.artist}>
               <input
                 className="artist__input visually-hidden"
@@ -62,7 +62,7 @@ const ArtistQuestionScreen = props => {
                 name="answer"
                 value={`artist-${i}`}
                 id={`artist-${i}`}
-                onChange={evt => {
+                onChange={(evt) => {
                   evt.preventDefault();
                   onAnswer(question, answer);
                 }}
@@ -84,8 +84,19 @@ const ArtistQuestionScreen = props => {
   );
 };
 
-// ArtistQuestionScreen.propTypes = {
-//   errorsCount: PropTypes.number.isRequired
-// };
+ArtistQuestionScreen.propTypes = {
+  onAnswer: PropTypes.func.isRequired,
+  question: PropTypes.shape({
+    answers: PropTypes.arrayOf(PropTypes.shape({
+      artist: PropTypes.string.isRequired,
+      picture: PropTypes.string.isRequired,
+    })).isRequired,
+    song: PropTypes.shape({
+      artist: PropTypes.string.isRequired,
+      src: PropTypes.string.isRequired,
+    }).isRequired,
+    type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
+  }).isRequired,
+};
 
 export default ArtistQuestionScreen;

@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import { GameType } from "../../const";
+import {GameType} from "../../const";
 
 // В компонент `GenreQuestionScreen` нам потребуется `state`. В нём мы будем хранить информацию о правильном ответе на очередной вопрос. Поэтому обновим компонент и перепишем его в class-components.
 
@@ -13,9 +13,9 @@ class GenreQuestionScreen extends PureComponent {
     };
   }
   render() {
-    const { onAnswer, question } = this.props;
-    const { answers: userAnswers } = this.state;
-    const { answers, genre } = question;
+    const {onAnswer, question} = this.props;
+    const {answers: userAnswers} = this.state;
+    const {answers, genre} = question;
     return (
       <section className="game game--genre">
         <header className="game__header">
@@ -77,7 +77,7 @@ class GenreQuestionScreen extends PureComponent {
                     value={`answer-${i}`}
                     id={`answer-${i}`}
                     checked={userAnswers[i]}
-                    onChange={evt => {
+                    onChange={(evt) => {
                       const value = evt.target.checked;
                       this.setState({
                         answers: [
@@ -111,10 +111,10 @@ GenreQuestionScreen.propTypes = {
   onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(
-      PropTypes.shape({
-        src: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired
-      })
+        PropTypes.shape({
+          src: PropTypes.string.isRequired,
+          genre: PropTypes.string.isRequired
+        })
     ).isRequired,
     genre: PropTypes.string.isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired
