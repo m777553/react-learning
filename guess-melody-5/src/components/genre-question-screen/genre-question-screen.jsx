@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {GameType} from "../../const";
+import {GameType} from "../../consts";
 
 // В компонент `GenreQuestionScreen` нам потребуется `state`. В нём мы будем хранить информацию о правильном ответе на очередной вопрос. Поэтому обновим компонент и перепишем его в class-components.
 
