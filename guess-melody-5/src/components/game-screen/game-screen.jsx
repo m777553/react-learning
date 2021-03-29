@@ -51,6 +51,14 @@ class GameScreen extends PureComponent {
           <GenreQuestionScreen
             question={question}
             onAnswer={() => {
+              // this.props и this.state могут обновляться асинхронно,
+              // вы не должны полагаться на их текущее значение для вычисления следующего состояния.
+//               Правильно будет использовать второй вариант вызова setState(), который принимает функцию, а не объект. Эта функция получит предыдущее состояние в качестве первого аргумента и значения пропсов непосредственно во время обновления в качестве второго аргумента:
+//
+// // Правильно
+// this.setState((state, props) => ({
+//   counter: state.counter + props.increment
+// }));
               this.setState((prevState) => ({
                 step: prevState.step + 1
               }));

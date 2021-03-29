@@ -26,6 +26,11 @@ const App = (props) => {
           path="/"
           render={({history}) => (
             <WelcomeScreen
+            //Здесь в колбеке этот синтаксис нужен для привязки this без использования bind в конструкторе
+            //<button onClick={(e) => this.deleteRow(id, e)}>Удалить строку</button>
+// <button onClick={this.deleteRow.bind(this, id)}>Удалить строку</button>
+// Две строки выше — эквивалентны, и используют стрелочные функции и Function.prototype.bind соответственно.
+
               onPlayButtonClick={() => history.push(`/game`)}
               errorsCount={errorsCount}
             />
