@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+
+// У нас есть компонент game-screen, который отвечает за принятие решения, компонент какой игры следует рендерить. Теперь добавим функциональности в компонент `WelcomeScreen`. Научим кнопку «Play» запускать игру.
+
 const WelcomeScreen = (props) => {
-  const {errorsCount} = props;
+  const {errorsCount, onPlayButtonClick} = props;
 
   return (
     <section className="welcome">
@@ -14,7 +17,7 @@ const WelcomeScreen = (props) => {
           height="83"
         />
       </div>
-      <button className="welcome__button">
+      <button className="welcome__button" onClick={onPlayButtonClick}>
         <span className="visually-hidden">Начать игру</span>
       </button>
       <h2 className="welcome__rules-title">Правила игры</h2>
@@ -29,7 +32,8 @@ const WelcomeScreen = (props) => {
 };
 
 WelcomeScreen.propTypes = {
-  errorsCount: PropTypes.number.isRequired
+  errorsCount: PropTypes.number.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 export default WelcomeScreen;

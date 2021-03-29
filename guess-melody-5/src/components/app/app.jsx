@@ -9,6 +9,14 @@ import GameOverScreen from "../game-over-screen/game-over-screen";
 import WinScreen from "../win-screen/win-screen";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
 
+
+
+
+// Добавим маршрут `/game` и обновим содержимое маршрутов `/dev-genre` и `/dev-artist`. Передадим в игровые экраны моки.
+//
+// Затем добавим передачу обработчика события `onPlayButtonClick` в компонент `WelcomeScreen`.
+
+
 const App = (props) => {
   const {errorsCount} = props;
 
