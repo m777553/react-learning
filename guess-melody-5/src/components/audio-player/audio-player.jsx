@@ -53,36 +53,48 @@ class AudioPlayer extends PureComponent {
     this._audio.onpause = null;
     this._audio = null;
   }
-	render(){
-		const {isLoading, isPlaying} = this.state;
-		return (
+  render() {
+    const { isLoading, isPlaying } = this.state;
+    return (
       <Fragment>
         <button
-          className={`track__button track__button--${isPlaying ? `pause` : `play`}`}
+          className={`track__button track__button--${
+            isPlaying ? `pause` : `play`
+          }`}
           type="button"
           disabled={isLoading}
-          onClick={() => this.setState({isPlaying: !this.state.isPlaying})}
+          onClick={() => this.setState({ isPlaying: !this.state.isPlaying })}
         />
         <div className="track__status">
           <audio />
         </div>
       </Fragment>
     );
-	}
+  }
 
-	componentDidUpdate() {
-	    if (this.state.isPlaying) {
-	      this._audio.play();
-	    } else {
-	      this._audio.pause();
-	    }
-	  }
-	}
+  //   componentDidUpdate() вызывается сразу после обновления. Не вызывается при первом рендере.
+  //
+  // Метод позволяет работать с DOM при обновлении компонента. Также он подходит для выполнения таких сетевых запросов, которые выполняются на основании результата сравнения текущих пропсов с предыдущими. Если пропсы не изменились, новый запрос может и не требоваться.
 
+  // В тех редких случаях когда реализован метод жизненного цикла getSnapshotBeforeUpdate(), его результат передаётся componentDidUpdate() в качестве третьего параметра snapshot.
+  // componentDidUpdate(prevProps, prevState, snapshot)
+  // Примечание:
+  //
+  // componentDidUpdate() не вызывается, если shouldComponentUpdate() возвращает false.
 
+  componentDidUpdate() {
+    if (this.state.isPlaying) {
+      this._audio.play();
+    } else {
+      this._audio.pause();
+    }
+  }
 }
 
 AudioPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
-  src: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  src: PropTypes.string.isRequired
 };
+
+export default AudioPlayer;

@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {GameType} from "../../consts";
+import AudioPlayer from "../audio-player/audio-player";
 
 // В компонент `GenreQuestionScreen` нам потребуется `state`. В нём мы будем хранить информацию о правильном ответе на очередной вопрос. Поэтому обновим компонент и перепишем его в class-components.
 
@@ -62,13 +63,8 @@ class GenreQuestionScreen extends PureComponent {
           >
             {answers.map((answer, i) => (
               <div key={`${i}-${answer.src}`} className="track">
-                <button
-                  className="track__button track__button--play"
-                  type="button"
-                ></button>
-                <div className="track__status">
-                  <audio src={answer.src}></audio>
-                </div>
+              
+                <AudioPlayer isPlaing={i===0} src={answer.src} />
                 <div className="game__answer">
                   <input
                     className="game__input visually-hidden"

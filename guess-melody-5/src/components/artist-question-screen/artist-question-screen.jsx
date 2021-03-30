@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {GameType} from "../../consts";
+import AudioPlayer from "../audio-player/audio-player";
 
 const ArtistQuestionScreen = (props) => {
   const {onAnswer, question} = props;
@@ -40,15 +41,16 @@ const ArtistQuestionScreen = (props) => {
 
       <section className="game__screen">
         <h2 className="game__title">Кто исполняет эту песню?</h2>
+
+        // Плееру
+        // требуется передать путь к мелодии, которую следует воспроизводить (`src`)
+        // и необходимость воспроизведения сразу как только мелодия будет готова для
+        // прослушивания.
         <div className="game__track">
           <div className="track">
-            <button
-              className="track__button track__button--play"
-              type="button"
-            ></button>
-            <div className="track__status">
-              <audio src={song.src}></audio>
-            </div>
+
+            <AudioPlayer isPlaing={true} src={song.src} />
+
           </div>
         </div>
 
